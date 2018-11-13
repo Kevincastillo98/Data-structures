@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
- 
 typedef struct nodopilas{
 	int info;
 	struct nodopilas *liga;
@@ -15,45 +12,42 @@ void imprimirpilas(nodop *);
 void menu_pilas();
 /*Fin de las declaraciones*/
  
-mainPilas()
-{
-  int opc;
-  int k;
-  
-  while(opc!=4)
-  {
-  	menu_pilas();
-  	scanf("%d",&opc);
-  	
-	switch(opc)
-  	{
-  		case 1: printf("ELEMENTO: ");
-	  			scanf("%d", &k); 
-				pushd(k);
-				break;
-  		case 2: popd();
-  				system("pause");
-		  		break;
-  		case 3: imprimirpilas(pil);
-  				system("pause"); 
-				break;
-  		
-  		case 4: exit(0);
-  		default: printf("\nSaliendo del programa...");
-  
-	  	return 0;
-  	}
-  }
-}
  
 void menu_pilas(){
- 	printf("\n\t..[        PILAS         ]..");
- 	printf("\n\t..[   MEMORIA DINAMICA   ]..\n\n");
-    printf(" 1. INGRESAR ELEMENTO [ PUSH ]\n");
-    printf(" 2. ELIMINAR ELEMENTO [ POP ]\n");
-    printf(" 3. IMPRIMIR EL CONTENIDO\n");  
-    printf(" 4. SALIR\n\n");
-    printf(" SELECCIONA UNA OPCION: ");
+    int opc;
+	int k,r;
+	  
+	  
+	  do{
+	  	printf("\n\t\tPILAS");
+	 	printf("\n\t\tMEMORIA DINAMICA\n\n");
+	    printf(" 1. INGRESAR ELEMENTO [ PUSH ]\n");
+	    printf(" 2. ELIMINAR ELEMENTO [ POP ]\n");
+	    printf(" 3. IMPRIMIR EL CONTENIDO\n");  
+	    printf(" 4. SALIR\n");
+	    printf("\nOPCION:");
+	  	scanf("%d",&opc);
+	  	system("cls");
+		switch(opc)
+	  	{
+	  		case 1: printf("ELEMENTO: ");
+		  			scanf("%d", &k); 
+					pushd(k);
+					break;
+	  		case 2: popd();
+			  		break;
+	  		case 3: imprimirpilas(pil);
+					break;
+	  		
+	  		case 4: exit(0);
+	  		break;
+	  	  	}
+	
+	     printf("\nDESEA HACER OTRA ACCION? SI=1 N0=2:");
+		scanf("%d",&r);
+		system("cls");  	  	
+  }while(r ==1 || opc != 4);
+  
 }
  
  //1._Algoritmo que realiza operación push en una pila
